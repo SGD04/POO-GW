@@ -8,7 +8,7 @@
 #ifndef COORDONNEE_H_
 #define COORDONNEE_H_
 
-/*classe abstraite*/
+/*classe abstraite de*/
 abstract class Coordonnee {
 public:
 	Coordonnee();
