@@ -7,7 +7,7 @@
 
 #ifndef COORDONNES_H_
 #define COORDONNES_H_
-/* hola*/
+/* hola que tal*/
 class coordonnes {
 public:
 	coordonnes();
