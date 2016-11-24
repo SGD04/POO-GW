@@ -21,6 +21,7 @@
 
 
 #include "Coordonne.h"
+#include "Personnage.h"
 #include <iostream>
 using namespace std;
 
@@ -31,6 +32,8 @@ int main()
 	Coordonne coord(0,0,5,10);
 	coord.affichage();
 
+	Personnage pe(999,0,0,5,10);
+	pe.afficher();
+
 	return 0;
 }
-
