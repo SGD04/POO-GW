@@ -5,7 +5,7 @@
  *      Author: Sergio Galan-Delea & Justine Denis
  *      Version: 1
  *
- *      @resume: Indication des coordonnées de l'ensemble des objets du programme
+ *      @resume: Indications des coordonnées de l'ensemble des objets du programme.
  */
 #include <iostream>
 #include <string.h>
