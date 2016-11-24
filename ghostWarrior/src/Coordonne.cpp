@@ -6,7 +6,7 @@
  * Case 925 -163, avenue de Luminy
  * 13288 Marseille CEDEX 9
  *
- * Ce fichier est l'oeuvre d'eleves de Polytech Marseille. Il ne peut être
+ * Ce fichier est l'oeuvre d'eleves de Polytech Marseille. Il ne peut Ãªtre
  * reproduit, utilise ou modifie sans l'avis express de ses auteurs.
  */
 
@@ -15,7 +15,7 @@
  * @author GALAN-DELEA Sergio <sergio.galan-delea@etu.univ-amu.fr>
  *
  * @version 1 / 23-11-2016
- * @Resume: Indications des coordonnées de l'ensemble des objets du programme.
+ * @Resume: Indications des coordonnÃ©es de l'ensemble des objets du programme.
  * @toto NA
  * @bug NA
 */
@@ -23,7 +23,7 @@
 #include "Coordonne.h"
 
 	/* @classe Coordonne
-	 * Constructeur des coordonnées des objets*/
+	 * Constructeur des coordonnÃ©es des objets*/
 	Coordonne::Coordonne(int x, int y, int lo, int la) {
 			_x = x;
 			_y = y;
@@ -43,7 +43,7 @@
 
 	Coordonne::~Coordonne(void)
 	{
-	    cout<<"Destructeur"<<endl;                             //rien alloué dynamiquement
+	   //rien allouÃ© dynamiquement
 	}
 
 
