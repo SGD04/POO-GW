@@ -39,7 +39,7 @@ class Coordonne {
 		/* Constructeur des coordonnées des objets*/
 		Coordonne(int x, int y, int lo, int la);
 
-		/*virtual*/ void affichage(void) const; /*= 0;*/ 	//Fonction abstraite
+		/*virtual*/ void affichage(void) ; /*= 0;*/ 	//Fonction abstraite
 
 		 /*Déclarations destructeur*/
 		 	virtual ~Coordonne();

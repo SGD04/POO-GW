@@ -11,6 +11,7 @@
 class MainTest {
 public:
 	MainTest();
+	int main(void);
 	virtual ~MainTest();
 };
 

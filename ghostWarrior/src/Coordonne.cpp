@@ -34,13 +34,17 @@
 	/*@classe Coordonne:
 	* Affichage des coordonnees
 	*/
-	void Coordonne::affichage(void)const
+	void Coordonne::affichage(void)
 	{
 		    cout<<"Affichage des coord"<<endl;
 		    cout<<_x<<_y<<_longueur<<_largeur<<" ";
 		    cout<<endl;
-
-		}
-	Coordonne::~Coordonne() {
-		 delete Coordonne;
 	}
+
+	Coordonne::~Coordonne(void)
+	{
+	    cout<<"Destructeur"<<endl;                             //rien alloué dynamiquement
+	}
+
+
+

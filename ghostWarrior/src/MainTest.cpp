@@ -21,14 +21,17 @@
 
 
 #include "MainTest.h"
+#include "Coordonne.h"
 #include <iostream>
 using namespace std;
 
 
 
-int main(void)
+int MainTest::main(void)
 {
-	Coordonne coord = new Coordonne(0,0,5,10);
+	Coordonne coord(0,0,5,10);
+	cout << "Les coord sont !!" << endl;
 	coord.affichage();
 
+	return(0);
 }
