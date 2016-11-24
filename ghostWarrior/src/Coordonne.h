@@ -1,12 +1,23 @@
 /*
  * Coordonne.h
  *
-  *  Created on: 23 nov. 2016
- *      Author: Sergio Galan-Delea & Justine Denis
- *      Version: 1
+ * Polytech Marseille
+ * Case 925 -163, avenue de Luminy
+ * 13288 Marseille CEDEX 9
  *
- *      @resume: Indications des coordonnées de l'ensemble des objets du programme.
+ * Ce fichier est l'oeuvre d'eleves de Polytech Marseille. Il ne peut être
+ * reproduit, utilise ou modifie sans l'avis express de ses auteurs.
  */
+
+/**
+ * @author DENIS Justine <justine.denis@etu.univ-amu.fr>
+ * @author GALAN-DELEA Sergio <sergio.galan-delea@etu.univ-amu.fr>
+ *
+ * @version 1 / 23-11-2016
+ * @Resume: Indications des coordonnées de l'ensemble des objets du programme.
+ * @toto NA
+ * @bug NA
+*/
 #include <iostream>
 #include <string.h>
 using namespace std;
@@ -28,7 +39,7 @@ class Coordonne {
 		/* Constructeur des coordonnées des objets*/
 		Coordonne(int x, int y, int lo, int la);
 
-		 virtual void afficher_nvx(ostream & flot) const = 0; 	//Fonction abstraite
+		/*virtual*/ void affichage(void) const; /*= 0;*/ 	//Fonction abstraite
 
 		 /*Déclarations destructeur*/
 		 	virtual ~Coordonne();
