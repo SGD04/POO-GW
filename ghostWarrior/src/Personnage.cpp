@@ -21,16 +21,21 @@
 
 #include "Personnage.h"
 
-/* Constructeurs: */
+/* Constructeurs des personnages:
+* @arg: n numero du personnage dans le jeu
+* @arg: x abcisse des objets
+* @arg: y ordonnee des objets
+* @arg: lo la longueur de l'objet graphique
+* @arg: lo la longueur de l'objet graphique
+*/
 Personnage::Personnage(int n, int x, int y, int lo, int la) : Coordonne(x,y,lo,la)
 {
     _num = n;
-    //Coordonne(x,y,lo,la);
+    _vie = 100;
 }
 
-
 /*Fonction d'affichage*/
-void Personnage:: afficher()
+void Personnage:: affiche(void) const
 {
     cout<<"num Perso"<<endl;
 	cout<<"num : "<<_num<<" "<<_x<<" "<<_y<<" "<<_longueur<<" "<<_largeur<<endl;
