@@ -23,7 +23,12 @@
 #include "Coordonne.h"
 
 	/* @classe Coordonne
-	 * Constructeur des coordonnées des objets*/
+	* Constructeur des coordonnées des objets
+	* @arg: x abcisse des objets
+     	* @arg: y ordonnee des objets
+     	* @arg: lo la longueur de l'objet graphique
+     	* @arg: lo la longueur de l'objet graphique
+     	*/
 	Coordonne::Coordonne(int x, int y, int lo, int la) {
 			_x = x;
 			_y = y;
@@ -32,19 +37,18 @@
 	}
 
 	/*@classe Coordonne:
-	* Affichage des coordonnees
+	* Affichage des coordonnees (virtual)
 	*/
-	void Coordonne::affichage(void)
+	void Coordonne::affiche(void) const
 	{
 		    cout<<"Affichage des coord"<<endl;
-		    cout<<_x<<_y<<_longueur<<_largeur<<" ";
+		    cout<<_x<<" "<<_y<<" "<<_longueur<<" "<<_largeur<<" ";
 		    cout<<endl;
 	}
 
+
+
 	Coordonne::~Coordonne(void)
 	{
-	   //rien alloué dynamiquement
+	    //rien alloué dynamiquement
 	}
-
-
-
