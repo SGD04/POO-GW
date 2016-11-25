@@ -5,7 +5,7 @@
  * Case 925 -163, avenue de Luminy
  * 13288 Marseille CEDEX 9
  *
- * Ce fichier est l'oeuvre d'eleves de Polytech Marseille. Il ne peut être
+ * Ce fichier est l'oeuvre d'eleves de Polytech Marseille. Il ne peut Ãªtre
  * reproduit, utilise ou modifie sans l'avis express de ses auteurs.
  */
 
@@ -14,7 +14,7 @@
  * @author GALAN-DELEA Sergio <sergio.galan-delea@etu.univ-amu.fr>
  *
  * @version 1 / 23-11-2016
- * @Resume: Indications des coordonnées de l'ensemble des objets du programme.
+ * @Resume: Indications des coordonnÃ©es de l'ensemble des objets du programme.
  * @toto NA
  * @bug NA
 */
@@ -28,20 +28,20 @@ using namespace std;
 
 class Coordonne {
 
-	/*Déclaration des attributs*/
+	/*DÃ©claration des attributs*/
 	protected:
-		int _x;							/*Point de coordonnée (x,y)*/
+		int _x;							/*Point de coordonnÃ©e (x,y)*/
 		int _y;
 		int _longueur;					/*Taille de l'objet*/
 		int _largeur;
 
 	public:
-		/* Constructeur des coordonnées des objets*/
+		/* Constructeur des coordonnÃ©es des objets*/
 		Coordonne(int x, int y, int lo, int la);
 
-		/*virtual*/ void affichage(void) ; /*= 0;*/ 	//Fonction abstraite
+		virtual void affiche() const; 	        //Fonction abstraite
 
-		 /*Déclarations destructeur*/
+		 /*DÃ©clarations destructeur*/
 		 	virtual ~Coordonne();
 
 };
