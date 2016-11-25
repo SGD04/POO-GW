@@ -34,6 +34,12 @@ int main()
 
 	Personnage pe(999,0,0,5,10);
 	pe.afficher();
+	
+	Joueur je("hj",1,0,0,2,12);
+	je.affiche();
+
+	Ennemi en(22,0,0,2,10);
+	en.affiche();
 
 	return 0;
 }
