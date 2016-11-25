@@ -31,18 +31,20 @@ class Personnage : public Coordonne
 {
     protected:
         int _num;                        //Numero du personnage
+        int _vie;                        //vie du personnage
 
 
     public:
         Personnage(int n, int x, int y, int lo, int la);
+        Personnage(int x, int y, int lo, int la);
         virtual ~Personnage();
 
-        void afficher();
+        void affiche(void) const;
 
-       /* deplacer();
-        defendre();
-        attaque();
-        gravite();*/
+       //deplacer();
+      // virtual void defendre();
+        //attaque();
+        //gravite();
 
 
 
