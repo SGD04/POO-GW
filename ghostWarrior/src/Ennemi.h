@@ -21,8 +21,12 @@
 
 #include <iostream>
 #include <string.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 using namespace std;
 #include "Personnage.h"
+#include "Joueur.h"
 
 #ifndef ENNEMI_H
 #define ENNEMI_H
@@ -30,10 +34,19 @@ using namespace std;
 
 class Ennemi : public Personnage
 {
+    //protected Map _grille;
+
     public:
         Ennemi(int n, int x, int y, int lo, int la);
         virtual ~Ennemi();
+
+        //fonctions:
         void affiche() const;
+        void attaque();
+        void defendre();
+        void combattre(Joueur j);
+        void deplacer(Joueur j);
+        bool obstace(int vect_x, int vect_y);
 
 };
 
