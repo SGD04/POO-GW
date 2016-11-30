@@ -39,6 +39,19 @@ void Joueur::affiche() const
 	cout<<"num : "<<_num<<" "<<_x<<" "<<_y<<" "<<_longueur<<" "<<_largeur<<endl;
 }
 
+/*Accesseur à la varaible de position x du joueur*/
+int Joueur::get_x()
+{
+    return(_x);
+}
+
+/*Accesseur à la varaible de position y du joueur*/
+int Joueur::get_y()
+{
+    return(_y);
+}
+
+
 Joueur::~Joueur()
 {
     //dtor
