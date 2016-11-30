@@ -38,6 +38,9 @@ class Joueur : public Personnage
         virtual ~Joueur();
 
         void affiche() const;
+        //void deplacer();
+        int get_x();
+        int get_y();
 
 
 };
