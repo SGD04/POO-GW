@@ -36,4 +36,5 @@ class Main
     Evenement();
     ~Evenement();
     void KeyBoardEventJ();
+    sf::Vector2i Evenement::KeyBoardEventM();
 };
