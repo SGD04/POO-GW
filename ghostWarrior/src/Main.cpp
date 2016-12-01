@@ -22,6 +22,10 @@
 
 #include "Coordonne.h"
 #include "Personnage.h"
+#include "Ennemi.h"
+#include "Joueur.h"
+#include "Map.h"
+
 #include <iostream>
 using namespace std;
 
@@ -29,17 +33,25 @@ using namespace std;
 
 int main()
 {
-	Coordonne coord(0,0,5,10);
-	coord.affichage();
+    Map carte;
+    carte.afficher();
 
-	Personnage pe(999,0,0,5,10);
-	pe.afficher();
-	
-	Joueur je("hj",1,0,0,2,12);
-	je.affiche();
 
-	Ennemi en(22,0,0,2,10);
+	Joueur j("test",99999,6,6,2,12);
+	//je.affiche();
+
+	Ennemi en(222222,9,4,2,10,carte);
 	en.affiche();
+
+	en.deplacer(j);
+	en.affiche();
+
+
+
+
+
+
+
 
 	return 0;
 }
