@@ -41,8 +41,80 @@ void Personnage:: affiche(void) const
 	cout<<"num : "<<_num<<" "<<_x<<" "<<_y<<" "<<_longueur<<" "<<_largeur<<endl;
 }
 
+void Personnage::Initval(){
+    // player position
+    sf::Vector2f pos(320, 240);
+
+    // player velocity (per frame)
+    sf::Vector2f vel(0, 0);
+
+    // gravity (per frame)
+    sf::Vector2f gravity(0, .5f);
+
+}
+
+
+void Personnage::ColisionEnv(){
+    // check for collision with the ground
+        if (pos.y > 480) {
+            vel.y = 0;
+            pos.y = 480;
+        }
+        // check for collision with the left border
+        if (pos.x < 16) {
+            vel.x = 0;
+            pos.x = 16;
+        }
+        else if (pos.x > 624) {
+            vel.x = 0;
+            pos.x = 624;
+        }
+}
+
+void Personnage::Jump(){
+// jumping
+        if (jump) {
+            if(onground){ // on the ground
+                vel.y += jumpacc * 2;
+                jumpcounter = jumpframes;
+            }
+            else if (jumpcounter > 0) { // first few frames in the air
+                vel.y += jumpacc;
+                jumpcounter--;
+            }
+        }
+        else { // jump key released, stop acceleration
+            jumpcounter = 0;
+        }
+}
+
+void Personnage::UpdatePerso(){
+     // first, apply velocities
+        pos += vel;
+
+        // determine whether the player is on the ground
+        onground = pos.y >= 480;
+        // now update the velocity by...
+        // ...updating gravity
+        vel += gravity;
+
+        // ...capping gravity
+        if (vel.y > maxfall)
+                vel.y = maxfall;
+        if (left) { // running to the left
+            vel.x -= runacc;
+        }
+        else if (right) { // running to the right
+            vel.x += runacc;
+        }
+        else { // not running anymore; slowing down each frame
+            vel.x *= 0.8;
+        }
+}
+
 /*Destructeur*/
 Personnage::~Personnage()
 {
     //pas d'elements dynamiques
 }
+
