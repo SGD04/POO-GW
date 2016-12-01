@@ -24,6 +24,9 @@
 
 using namespace std;
 
+#ifndef EVENEMENT_H
+#define EVENEMENT_H
+
 class Main
 {
     public:
