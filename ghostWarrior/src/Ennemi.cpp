@@ -29,9 +29,9 @@
 * @arg: lo la longueur de l'objet graphique
 * @arg: lo la longueur de l'objet graphique
 */
-Ennemi::Ennemi(int n, int x, int y, int lo, int la) :  Personnage(n,x,y,lo,la)
+Ennemi::Ennemi(int n, int x, int y, int lo, int la, Map c) :  Personnage(n,x,y,lo,la)
 {
-    //ctor
+    Map _carte(c);
 }
 
 /*Valeur aléatoire donne entre a et b (a<b)
@@ -44,12 +44,31 @@ int rand_a_b(int a, int b)
     return rand()%(b-a) +a;
 }
 
+
+
+/* Detecte s'il y a un obstacle entre l'ennemi et le joueur
+* @Return: booléen 1 s'il y a des obstacles et 0 sinon.
+*  @Param: le joueur vers qui l'ennemi approche
+*/
+bool Ennemi::obstacle(Joueur j)
+{
+    bool b = false;
+    for(int i=_x; i<=j.get_x(); i++)                //parcours entre ennemie et joueur
+    {
+        if(_carte.infos_case(_y,i) == 1)            //si obstacle
+        {
+            b = true;
+        }
+    }
+    return(b);
+}
+
 /* Choix du comportement de l'ennemi (defense, attaque ou deplacement) en fonction du joueur
 * @param : Le joueur du jeu (personnage controlé par l'humain)
 */
 void Ennemi::combattre(Joueur j)
 {
-    if(_y == j.get_y())                          //Si au meme niveau
+    if((_y == j.get_y()) && (obstacle(j) == 0))                          //Si au meme niveau sans obstacle
     {
         if(rand_a_b(0,10) <= 7) attaque();       //Attaque de manière aléatoire avec plus de probabilite
         else defendre();
@@ -62,33 +81,152 @@ void Ennemi::combattre(Joueur j)
 }
 
 
-/* Detecte s'il y a un obstacle entre l'ennemi et le joueur
-* @Param: vect_x est la coordonnée x du vecteur joueur/ennemi
-* @Param: vect_y est la coordonnée y du vecteur joueur/ennemi
-* @Return: booléen 1 s'il y a des obstacles et 0 sinon.
-*/
-/*
-bool Ennemi::obstace(int vect_x, int vect_y, Map m)
+int Ennemi::tomber()
 {
+    int ord = _y;
+     while((_carte.infos_case(_x, ord) == 0) && (ord > 0))   //Tombe s'il n'y a pas de plateforme
+        {
+            ord++;
+        }
+    return(ord-1);
+}
 
-}*/
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* L'ennemi avance vers le joueur en fonction de la map
 * @Param: le joueur vers qui l'ennemi approche
 */
 void Ennemi::deplacer(Joueur j)
 {
-    if(_y == j.get_y())                    //Meme niveau
+
+   /* Noeud depart(_x,_y,0,0);    //depart = coordonne de l'ennemi
+    list<Noeud> listeOuverte;
+    list<Noeud> listeNoeudVerif;
+    listeOuverte.push_back(depart);
+    listeNoeudVerif.push_back(depart);
+    while(!listeOuverte.empty())           //Non vide
     {
-        if(_x > j.get_x()) _x = _x-1;      //prendre en compte peut être sur plateforme differente
-        else _x = _x+1;
-    }
-    else//if(_y >= j.get_y())                     //Ennemi au dessus personnage
+        //pas sur h = noeud
+        Noeud h = listeOuverte.back();
+        listeOuverte.pop_back();            //depile
+        if((h.get_x() == j.get_x()) && (h.get_y() == j.get_y())) //si atteint objectif
+        {
+            /*reconstituerChemin(u)
+            terminer le programme*/
+     /*   }
+        int vi, vj;             //coordonnees i et j voisins de h
+        for(vi = h.get_x()-1; vi<=h.get_x()+1; vi++)
+        {
+            for(vj = h.get_y()-1; vj <= h.get_y()+1; vj++)
+            {
+                if(_grille.infos_case(vi,vj) == 0)          //si case n'est pas un obstacle
+                {
+                    //if(Noeud deja ds la listeOuverte)
+                    {
+                       // if(NoeudV.comparer(Noeud ds liste) == 1)
+                       {
+                           //maj heuristique du noeud ds liste ouverte
+                           //maj lien parent
+                       }else
+                       {
+                           //ajoute Noeud a la liste ouverte (lien parent = courant)
+                       }
+                    }
+                }
+            }
+
+        }
+        for(//Toute la liste ouverte)
+        {
+            //Noeud = meilleur qualite Noeud
+            /*if(Noeud.compare(NoeudListOuverte) == 1)
+            Noeud = NoeudListOuverte*/
+       /* }
+        //Mettre Noeud meilleur ds liste Fermer
+
+    }*/
+
+    /*int droit = _x+1;
+    int gauche = _x-1;
+    int dessus = _y+1;
+    int dessous = _y-1;*/
+   /* for(int i=gauche; i<=droit; i++)
     {
-        _y = _y+1;                          //saut
-        if(_x > j.get_x()) _x = _x-1;
-        else _x = _x+1;
+        for(int h=dessous; h<=dessus; h++)
+        {
+            if(_carte.infos_case(i,h) == 0)
+            {
+                if(_x < j.get_x()) _x = _x+1;
+                else if( _x >= j.get_x()) _x = _x-1;
+                else if(_y < j.get_y()) _y = _y+1;
+                else _y = _y-1;
+
+            }
+        }
+    }*/
+    //Ennemi en haut, à gauche du joueur
+    if(_x < j.get_x() && _y > j.get_y())
+    {
+        if (_carte.infos_case(_x+1,_y) == 0)            //Priorite 1: Deplacement vers la droite
+        {
+            _x++;
+            _y = tomber();
+        }else if(_carte.infos_case(_x-1,_y) == 0)       //Priorite 2: Deplacement vers la gauche
+        {
+            _x--;
+            _y = tomber();
+        }else                                           //Priorite 3: saut
+        {
+            if(_carte.infos_case(_x+1,_y+1) == 0) {_x++; _y++;}     //saut à droite
+            else {_x--; _y++;}                                      //saut à gauche
+        }
     }
+    //Ennemi en haut, à droite du joueur
+    else if(_x >= j.get_x() && _y >= j.get_y())
+    {
+        if (_carte.infos_case(_x-1,_y) == 0)            //Priorite 1: Deplacement vers la gauche
+        {
+            _x--;
+            _y = tomber();
+        }else if(_carte.infos_case(_x+1,_y) == 0)       //Priorite 2: Deplacement vers la droite
+        {
+            _x++;
+            _y = tomber();
+        }else                                           //Priorite 3: saut
+        {
+            if(_carte.infos_case(_x-1,_y+1) == 0) {_x--; _y++;}     //saut à gauche
+            else {_x++; _y++;}                                      //saut à droite
+        }
+    }
+    //Ennemi en bas, à droite du joueur
+    else if(_x < j.get_x() && _y < j.get_y())
+    {
+        if(_carte.infos_case(_x+1,_y+1) == 0)            //Priorite 1: Deplacement vers la droite
+        {
+            _x++;
+            _y = tomber();
+        }else if(_carte.infos_case(_x-1,_y) == 0)       //Priorite 2: Deplacement vers la gauche
+        {
+            _x--;
+            _y = tomber();
+        }else                                           //Priorite 3: saut
+        {
+            if(_carte.infos_case(_x+1,_y+1) == 0) {_x++; _y++;}     //saut à droite
+            else {_x--; _y++;}                                      //saut à gauche
+        }
+    }
+
 }
 
 
@@ -108,7 +246,7 @@ void Ennemi::attaque()
 void Ennemi::affiche() const
 {
     cout<<"Ennemi"<<endl;
-	cout<<"num : "<<_num<<" "<<_x<<" "<<_y<<" "<<_longueur<<" "<<_largeur<<endl;
+	cout<<"num: "<<_num<<" Coord: ("<<_x<<","<<_y<<") "<<_longueur<<" "<<_largeur<<endl;
 }
 
 Ennemi::~Ennemi()
