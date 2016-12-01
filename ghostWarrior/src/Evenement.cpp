@@ -29,7 +29,7 @@
  * \return
  *
  */
-Main::Main(){
+Evenement::Evenement(){
     Initval();
 }
 
@@ -40,7 +40,7 @@ Main::Main(){
  * \return
  *
  */
-Main::~Main(){
+Evenement::~Evenement(){
 
 }
 
@@ -51,7 +51,7 @@ Main::~Main(){
  * \return
  *
  */
-void Main::KeyBoardEvent(){
+void Evenement::KeyBoardEventJ(){
     while (window.pollEvent(event)) {
             switch(event.type) {
             case sf::Event::KeyPressed:
@@ -68,6 +68,23 @@ void Main::KeyBoardEvent(){
                     break;
                 case sf::Keyboard::Space:
                     jump = event.type == sf::Event::KeyPressed;
+                    break;
+                }
+                break;
+            case sf::Event::Closed:
+                window.close();
+                break;
+            }
+    }
+}
+
+sf::Vector2i Evenement::KeyBoardEventM(){
+    while (window.pollEvent(event)) {
+            switch(event.type) {
+            case sf::Event::MouseButtonReleased:
+                switch (event.mouseButton.button) {
+                case sf::Mouse::Left:
+                    return sf::Mouse::getPosition();
                     break;
                 }
                 break;
