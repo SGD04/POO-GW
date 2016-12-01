@@ -25,29 +25,36 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+//#include <vector>
 #include <iostream>
 using namespace std;
 
+
 /*Taille de l'écran de l'ordinateur et donc de la carte*/
-#define LARGEUR_ECRAN  5
-#define LONGUEUR_ECRAN  5
+#define LARGEUR_ECRAN  10
+#define LONGUEUR_ECRAN  10
 
 
 class Map
 {
-    protected:
-        int _grille[LARGEUR_ECRAN][LONGUEUR_ECRAN];            //Tableau de la carte de jeu
+    public:
+
+        int _grille[LONGUEUR_ECRAN][LARGEUR_ECRAN];            //Tableau de la carte de jeu
+        //vector< vector<int> > _grille;
         int _background;                                        //Textures de la map
         int _plateforme;
 
 
 
 
+
     public:
         Map();
+        Map(const Map &);
         virtual ~Map();
 
-        void afficher() const;
+        void afficher() ;
+        int infos_case (int i, int j);
 
 
 };
