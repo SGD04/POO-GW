@@ -101,14 +101,17 @@ void Personnage::UpdatePerso(){
         // ...capping gravity
         if (vel.y > maxfall)
                 vel.y = maxfall;
-        if (left) { // running to the left
+        if (left & !right) { // running to the left
             vel.x -= runacc;
         }
-        else if (right) { // running to the right
+        if (!left & right) { // running to the right
             vel.x += runacc;
         }
-        else { // not running anymore; slowing down each frame
-            vel.x *= 0.8;
+        if(!left & !right) { // not running anymore; slowing down each frame
+            vel.x *= 0.7;
+        }
+        if(left & right) { // if left and right keyboard press -> stop
+            vel.x *= 0.0;
         }
 }
 
