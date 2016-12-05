@@ -27,7 +27,7 @@ using namespace std;
 #ifndef EVENEMENT_H
 #define EVENEMENT_H
 
-class Main
+class Evenement
 {
     public:
     //attribut
