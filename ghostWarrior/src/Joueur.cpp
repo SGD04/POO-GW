@@ -27,32 +27,71 @@
 * @arg: y ordonnee des objets
 * @arg: lo la longueur de l'objet graphique
 * @arg: lo la longueur de l'objet graphique
+* @arg: c est la carte du jeu
 */
-Joueur::Joueur(string nom, int n, int x, int y, int lo, int la) :  Personnage(n,x,y,lo,la)
+Joueur::Joueur(int n, int x, int y, float lo, float la, Map c, const string & nom) : Personnage(n,x,y,lo,la,c)
 {
     _nom = nom;
+
 }
 
 void Joueur::affiche() const
 {
     cout<<"Joueur"<<endl;
-	cout<<"num : "<<_num<<" "<<_x<<" "<<_y<<" "<<_longueur<<" "<<_largeur<<endl;
+	cout<<"num : "<<_num<<" "<<pos.x<<" "<<pos.y<<" "<<_longueur<<" "<<_largeur<<endl;
 }
 
 /*Accesseur à la varaible de position x du joueur*/
 int Joueur::get_x()
 {
-    return(_x);
+    return(pos.x);
 }
 
 /*Accesseur à la varaible de position y du joueur*/
 int Joueur::get_y()
 {
-    return(_y);
+    return(pos.y);
 }
+
+/*Accesseur à la varaible largeur du joueur*/
+float Joueur::get_largeur()
+{
+    return(_largeur);
+}
+
+/*Accesseur à la varaible longeur du joueur*/
+float Joueur::get_longueur()
+{
+    return(_longueur);
+}
+
+
+
+
+
+
+/** \brief Change les attributs du joueur en fonction du type de bonus touché
+ * \param l'entier correspondant au type de bonus
+ * \TODO: indiquer les changement en fonction des bonus (qd graphisme sera ok)
+ */
+void Joueur::changerAttribut(int t)
+{
+    if(t == 0)
+    {
+
+    }else if(t == 1)
+    {
+
+    }else
+    {
+
+    }
+}
+
 
 
 Joueur::~Joueur()
 {
+   // cout<<"Destructeur Joueur"<<endl;
     //dtor
 }
