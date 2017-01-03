@@ -30,10 +30,12 @@
      	* @arg: lo la longueur de l'objet graphique
      	*/
 	Coordonne::Coordonne(int x, int y, int lo, int la) {
-			_x = x;
-			_y = y;
+            pos = sf::Vector2f(x, y);
 			_longueur = lo;
 			_largeur = la;
+            _hautEcran = GetSystemMetrics( SM_CYSCREEN );//480;//
+            _longEcran = GetSystemMetrics( SM_CXSCREEN );//640;//
+
 	}
 
 	/*@classe Coordonne:
@@ -42,9 +44,11 @@
 	void Coordonne::affiche(void) const
 	{
 		    cout<<"Affichage des coord"<<endl;
-		    cout<<_x<<" "<<_y<<" "<<_longueur<<" "<<_largeur<<" ";
+		    cout<<pos.x<<" "<<pos.y<<" "<<_longueur<<" "<<_largeur<<" ";
 		    cout<<endl;
 	}
+
+
 
 
 
