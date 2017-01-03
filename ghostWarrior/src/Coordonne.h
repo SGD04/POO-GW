@@ -21,7 +21,11 @@
 #include <iostream>
 #include <string.h>
 using namespace std;
+#include <SFML/Graphics.hpp>            //library graphic
+#include <windows.h>
 
+/*#define WIDTH_SCREEN 480
+#define LENGHT_SCREEN 640*/
 
 #ifndef COORDONNE_H_
 #define COORDONNE_H_
@@ -30,12 +34,17 @@ class Coordonne {
 
 	/*Déclaration des attributs*/
 	protected:
-		int _x;							/*Point de coordonnée (x,y)*/
-		int _y;
-		int _longueur;					/*Taille de l'objet*/
-		int _largeur;
+		float _longueur;					/*Taille de l'objet*/
+		float _largeur;
+        /*Taille de l'ecran (full screen sans la bare windows)*/
+        int _hautEcran ;
+        int _longEcran;
+
+
 
 	public:
+	     sf::Vector2f pos /*= sf::Vector2f(320, 240)*/;
+
 		/* Constructeur des coordonnées des objets*/
 		Coordonne(int x, int y, int lo, int la);
 
