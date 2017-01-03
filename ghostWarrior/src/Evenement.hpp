@@ -20,7 +20,11 @@
 
 #include <SFML/Graphics.hpp>
 #include <iostream>
+#include <windows.h>
 #include <string.h>
+#define LEFT 1
+#define RIGHT 2
+#define JUMP 3
 
 using namespace std;
 
@@ -29,12 +33,32 @@ using namespace std;
 
 class Evenement
 {
+
+protected:
+    int _hautEcran ;
+    int _longEcran ;
     public:
     //attribut
+    sf::RenderWindow window;
+    sf::Event event;
+
+    // inputs
+    bool left = false;
+    bool right = false;
+    bool jump = false;
+    bool def = false;               //defense
 
     //fonctions
     Evenement();
     ~Evenement();
     void KeyBoardEventJ();
-    sf::Vector2i Evenement::KeyBoardEventM();
+    sf::Vector2i KeyBoardEventM();
+
+    //accesseur
+    bool get_left();
+    bool get_right();
+    bool get_jump();
 };
+
+#endif
+
