@@ -22,35 +22,24 @@
 
 #include "Evenement.hpp"
 
-/** \brief
- *
- * \param
- * \param
- * \return
- *
- */
-Evenement::Evenement(){
-    Initval();
+Evenement::Evenement()
+{
+    cout<<"debut ev"<<endl;
+     _hautEcran = GetSystemMetrics( SM_CYSCREEN );//480;//
+     _longEcran = GetSystemMetrics( SM_CXSCREEN );
+    // Declare and create a new window
+    window.create(sf::VideoMode(_longEcran, _hautEcran), "Ghost Warrior",sf::Style::Default);
+    //reglage du framerate
+    window.setFramerateLimit(60);
+    //synchronisation rafraichissement ecran
+    window.setVerticalSyncEnabled(false);
+    cout<<"fin ev"<<endl;
 }
 
-/** \brief
- *
- * \param
- * \param
- * \return
- *
- */
 Evenement::~Evenement(){
 
 }
 
-/** \brief
- *
- * \param
- * \param
- * \return
- *
- */
 void Evenement::KeyBoardEventJ(){
     while (window.pollEvent(event)) {
             switch(event.type) {
@@ -68,6 +57,9 @@ void Evenement::KeyBoardEventJ(){
                     break;
                 case sf::Keyboard::Space:
                     jump = event.type == sf::Event::KeyPressed;
+                    break;
+                case sf::Keyboard::D:                           //defense
+                    def = event.type == sf::Event::KeyPressed;
                     break;
                 }
                 break;
@@ -96,3 +88,17 @@ sf::Vector2i Evenement::KeyBoardEventM(){
 }
 
 
+bool Evenement::get_left()
+{
+    return(left);
+}
+
+bool Evenement::get_right()
+{
+    return(right);
+}
+
+bool Evenement::get_jump()
+{
+    return(jump);
+}
