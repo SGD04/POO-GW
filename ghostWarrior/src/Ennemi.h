@@ -24,37 +24,36 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-
 #include <list>
-using namespace std;
 #include "Personnage.h"
 #include "Joueur.h"
-#include "Noeud.h"
 #include "Map.h"
 
 #ifndef ENNEMI_H
 #define ENNEMI_H
 
+using namespace std;
 
 class Ennemi : public Personnage
 {
-protected:
-    Map _carte;
+/*protected:
+    Map _carte;*/
 
     public:
-        Ennemi(int n, int x, int y, int lo, int la, Map c);
+        Ennemi(int n, int x, int y, float lo, float la, Map c);
         virtual ~Ennemi();
 
         //fonctions:
         void affiche() const;
         void attaque();
-        void defendre();
         int tomber();
         void combattre(Joueur j);
         void deplacer(Joueur j);
         bool obstacle(Joueur j);
+        void colision();
 
 };
 
 #endif // ENNEMI_H
+
 
